@@ -14,9 +14,10 @@ Let's assume you have a properties file named `resources/messages_en.properties`
 To load the properties file, you will need to first get an instance of `Igloo`. 
 
 `Igloo()` accepts two parameters:
-- `resolve: String=>Option[URI]` - Resolve the location of bundles. Default: `Igloo.resourceResolver("i18n")`, which looks into the `i18n` subdirectory of you resources path.
-- `create: (String,Locale,URI)=>Bundle` - Create a new `Bundle`. Default: `Igloo.createBundle`, which loads the resources using a reader and `PropertyResourceBundle`.
+  - `resolve: String=>Option[URI]` - Resolve the location of bundles. Default: `Igloo.resourceResolver("i18n")`, which looks into the `i18n` subdirectory of you resources path.
+  - `create: (String,Locale,URI)=>Bundle` - Create a new `Bundle`. Default: `Igloo.createBundle`, which loads the resources using a reader and `PropertyResourceBundle`.
 
+The following is instantiating `Igloo` with default arguments:
 
     import us.stivers.igloo.Igloo
 
