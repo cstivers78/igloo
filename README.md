@@ -17,9 +17,11 @@ To load the properties file, you will need to first get an instance of `Igloo`.
 - `resolve: String=>Option[URI]` - Resolve the location of bundles. Default: `Igloo.resourceResolver("i18n")`, which looks into the `i18n` subdirectory of you resources path.
 - `create: (String,Locale,URI)=>Bundle` - Create a new `Bundle`. Default: `Igloo.createBundle`, which loads the resources using a reader and `PropertyResourceBundle`.
 
+
     import us.stivers.igloo.Igloo
 
     val igloo = Igloo()
+
 
 Once you have an instance of `Igloo`, you can then load bundles. To load a bundle, you need to provide the name of the bundle and the locale. The locale is required and you have several methods you can use to specify it:
 - `language`, `country` and `variant` parameters. 
