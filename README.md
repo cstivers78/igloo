@@ -70,12 +70,12 @@ If you happen to be in a situation where you can not provide arguments to the me
       case (_,m) => m
     }
 
-The `map` function takes a function argument of: `((String,Message))=>Message`. It will return a new bundle, with the updated messages. So, when you get the `personal_greeting` message, it will already be formatted:
+The `map` function takes a function argument of: `((String,Message))=>Message`, where `String` is the resource key and message is the message resource. The result of the `map` function is a new bundle containing the updated messages. So, when you get the `personal_greeting` message from this new bundle, it will already be formatted:
 
     bundleA("personal_greeting")
     // Hello Bill
 
-This is especially useful when you want to use a "logic-less" templating system such as Mustache. 
+This method of formatting messages is especially useful when you want to use a "logic-less" templating system such as Mustache, where you are not able to call functions. 
 
 
 
