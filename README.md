@@ -6,7 +6,7 @@ Igloo provides easy to use interface on top of PropertyResourceBundles, but load
 
 ## Usage
 
-Let's assume you have a properties file named `resources/messages_en.properties` with the following contents:
+Let's assume you have a properties file named `resources/i18n/messages_en.properties` with the following contents:
 
     greeting = Hello
     personal_greeting = Hello {0}
