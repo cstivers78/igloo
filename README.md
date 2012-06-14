@@ -6,7 +6,7 @@ Igloo provides easy to use interface on top of PropertyResourceBundles, but load
 
 ## Usage
 
-Let's assume you have a properties file named `resources/i18n/messages_en.properties` with the following contents:
+Let's assume you have a properties file named `src/main/resources/i18n/messages_en.properties` with the following contents:
 
     greeting = Hello
     personal_greeting = Hello {0}
@@ -17,7 +17,7 @@ To load the properties file, you will need to first create an instance of `Igloo
 
 `Igloo()` accepts three parameters:
 
-- `resolve: String=>Option[URI]` - Resolve the location of bundles. Default: `Igloo.resourceResolver("i18n")`, which looks into the `i18n` subdirectory of you resources path.
+- `resolve: String=>Option[URI]` - Resolve the location of bundles. Default: `Igloo.resourceResolver("i18n")`, which looks into the `i18n` subdirectory of the resources path.
 - `create: (String,Locale,URI)=>Bundle` - Create a new `Bundle`. Default: `Igloo.createBundle`, which loads the resources using a reader and `PropertyResourceBundle`.
 - `default: Bundle` - the default Bundle to use if one can not be found. Default: `Bundle.empty`.
 
