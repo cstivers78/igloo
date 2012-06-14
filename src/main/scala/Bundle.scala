@@ -26,6 +26,7 @@ case class Bundle(name: String, locale: Locale, uri: URI, messages: Map[String,M
     copy( messages = messages.collect(pf2) )
   }
 
+  override lazy val toString = "Bundle(" + name + "," + locale.toString +")"
 }
 
 object Bundle {
