@@ -13,23 +13,23 @@ Let's assume you have a properties file named `src/main/resources/i18n/messages_
 
 The property files is a like a Java property resource files, except the contents can be UTF-8 encoded.
 
-To load the properties file, you will need to first create an instance of `Igloo`. 
+To load the properties file, you will need to first create an instance of `Bundles`.  `Bundles` provides the facilities for resolving and loading a resource bundle.
 
-`Igloo()` accepts three parameters:
+`Bundles()` accepts three parameters:
 
 - `resolve: String=>Option[URI]` - Resolve the location of bundles. Default: `Igloo.resourceResolver("i18n")`, which looks into the `i18n` subdirectory of the resources path.
 - `create: (String,Locale,URI)=>Bundle` - Create a new `Bundle`. Default: `Igloo.createBundle`, which loads the resources using a reader and `PropertyResourceBundle`.
 - `default: Bundle` - the default Bundle to use if one can not be found. Default: `Bundle.empty`.
 
 
-The following will instantiate `Igloo` with default arguments:
+The following will instantiate `Bundles` with default arguments:
 
-    import us.stivers.igloo.Igloo
+    import us.stivers.igloo.Bundles
 
-    val igloo = Igloo()
+    val bundles = Bundles()
 
 
-Once you have an instance of `Igloo`, you can then load bundles. To load a bundle, you need to provide the name of the bundle and the locale. The locale is required and there are several methods you can use to specify it:
+Once you have an instance of `Bundles`, you can then load bundles. To load a bundle, you need to provide the name of the bundle and the locale. The locale is required and there are several methods you can use to specify it:
 
 - `language`, `country` and `variant` parameters. 
 - An instance of igloo's `Locale`.
@@ -37,16 +37,16 @@ Once you have an instance of `Igloo`, you can then load bundles. To load a bundl
 
 Some examples:
 
-    val bundle1 = igloo("messages","en")
-    val bundle4 = igloo("messages",Locale("en"))
-    val bundle4 = igloo("messages",new java.util.Locale("en"))
-    val bundle3 = igloo("messages",java.util.Locale.ENGLISH)
+    val bundle1 = bundles("messages","en")
+    val bundle4 = bundles("messages",Locale("en"))
+    val bundle4 = bundles("messages",new java.util.Locale("en"))
+    val bundle3 = bundles("messages",java.util.Locale.ENGLISH)
 
 Each of the statements above will attempt to load `message_en.properties`. If that bundle is not found, then it will truncate the name and attempt to load `message.properties`.  
 
 Going forward, we will use this:
 
-    val bundle = igloo("messages","en")
+    val bundle = bundles("messages","en")
 
 With the bundle loaded, you can then access the messages in the bundle:
 
@@ -84,8 +84,8 @@ This method of formatting messages is especially useful when you want to use a "
 Igloo currently silently fails when a bundle or resource is not found. This is designed and expected because, as it is performing operations with the expectation that if a bundle or resource is not found, you want to still continue and get an empty string. 
 
 If this is not sufficient for you, then you have a couple options:
-1. Utilize the `get` methods from `Igloo` and `Bundle`, they return `Option`, which you can then use to perform additional handling.
-2. Supply alternate values for the `default` constructor argument for `Igloo` and `Bundle`. Currently they are `Bundle.empty` and `Message.empty` (respectfully).
+1. Utilize the `get` methods from `Bundles` and `Bundle`, they return `Option`, which you can then use to perform additional handling.
+2. Supply alternate values for the `default` constructor argument for `Bundles` and `Bundle`. Currently they are `Bundle.empty` and `Message.empty` (respectfully).
 
 ## Dependencies
 
